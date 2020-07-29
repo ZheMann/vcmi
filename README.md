@@ -5,9 +5,13 @@ This repository consists of code to perform the task of video camera model ident
 In constrained_net.py the parameter self.constrained_net can be set to False to remove the constrained convolutional layer. 
 
 ## Creation of datasets
-To create the datasets, we assume the VISION dataset is available in its original structure. Obviously, we only need the videos for each device so images may be skipped. 
+To create the datasets, we assume the VISION dataset (only videos) is available in the original structure.  
 
-1. Execute frame_extractor.py by setting param --input_dir="/path/to/VISION dataset". This script iterates over each device and extracts N frames from each video. A separate directory is created for every video, consisting of N frames. 
+1. Execute `frame_extractor.py` and set param `--input_dir="/path/to/VISION dataset"`. This script iterates over each device and extracts `N` frames from each video. A separate directory is created for every video, consisting of `N` frames. 
+
+2. Execute `create_main_test.py`
+
+3. Execute `create_train_test_set.py`
 
 
 ## Experiment 1. Frames
