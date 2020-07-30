@@ -15,7 +15,7 @@ parser.add_argument('--model_path', type=str, required=False, help='Path to mode
 parser.add_argument('--dataset', type=str, required=False, help='Path to dataset to train the constrained_net')
 parser.add_argument('--height', type=int, required=False, default=480, help='Input Height [default: 480]')
 parser.add_argument('--width', type=int, required=False, default=800, help='Width of CNN input dimension [default: 800]')
-parser.add_argument('--constrained', type=int, required=False, default=0, help='Include constrained layer')
+parser.add_argument('--constrained', type=int, required=False, default=1, help='Include constrained layer')
 
 def run_locally():
     fc_size = 1024
