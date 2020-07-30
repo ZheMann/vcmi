@@ -29,7 +29,7 @@ VISION
 ### Frame dataset
 In the following steps we refer to the VISION dataset as the VISION video dataset. 
 
-1. Execute `frame_extractor.py` and set params `--input_dir="/path/to/VISION video dataset"` and `--output_dir=/path/to/VISION frame dataset`. This script creates a new directory (i.e. `/path/to/VISION frame dataset`) consisting of frames. This script iterates over each device in the VISION video dataset, and extracts `N` frames from each video. A separate directory is created for every video. To change the number of frames extracted from a video, change param `--frames_to_save_per_video`.
+1. Execute `frame_extractor.py`. Set params `--input_dir="/path/to/VISION video dataset"` and `--output_dir=/path/to/VISION frame dataset`. This script creates a new directory (i.e. `/path/to/VISION frame dataset`) consisting of frames. This script iterates over each device in the VISION video dataset, and extracts `N` frames from each video. A separate directory is created for every video. To change the number of frames extracted from a video, change param `--frames_to_save_per_video`.
 
 2. Execute `create_main_test.py`. Set property `VISION_DATASET_DIR` (line 54) to the path to `/path/to/VISION video dataset` and set `VISION_FRAMES_DIR` (line 55) to `/path/to/VISION frame dataset`. This script creates a new dataset for 28 devices (hard-defined in script itself) with only valid videos. A video is considered to be valid when both WhatsApp and YouTube versions are available for the native/original video. 
 
