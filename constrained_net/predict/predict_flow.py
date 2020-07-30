@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('--input_dir', type=str, required=True, help='Path to directory consisting of .h5-models (to use for predicting)')
 parser.add_argument('--models', type=str, required=False, help='Models within input dir (*.h5) to evaluate. Separate models by a ",". ')
-parser.add_argument('--constrained', type=int, required=False, default=0, help='Constrained layer included (0=no, 1=yes)')
+parser.add_argument('--constrained', type=int, required=False, default=1, help='Constrained layer included (0=no, 1=yes)')
 parser.add_argument('--dataset', type=str, required=True, help='Dataset to use to make predictions')
 parser.add_argument('--batch_size', type=int, required=False, default=64, help='Batch size')
 parser.add_argument('--height', type=int, required=False, default=480, help='Height of CNN input dimension [default=480]')
