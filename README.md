@@ -71,9 +71,9 @@ Script `predict_flow.py` involves many steps, which I will further explain.
 To create frame and video predictions, we first create two csv-files for every model in the input directory:
 
 1. In `predict_frames.py`, frames are predicted by the ConstrainedNet and subsequently saved to a csv-file.
-2. In `predict_videos.py`, the frame prediction csv-file (produced in step 1.) is loaded and used to predict videos by the majority vote. Video predictions are saved in a separate csv-file.
+2. In `predict_videos.py`, the frame prediction csv-file (produced in step 1.) is loaded and used to predict videos by the majority vote. Video predictions are saved to a separate csv-file.
 
-This results in `K` frame prediction csv-files and `K` video prediction csv-files where `K` represents the number of models in the input directory. To visualize the prediction results, we have to calculate the statistics for every frame and video csv-file, which is done as follows:
+This eventually results in `K` frame prediction csv-files and `K` video prediction csv-files where `K` represents the number of models in the input directory. To visualize the prediction results, we have to calculate the statistics for every frame and video csv-file, which is done as follows:
 
 3. In `frame_prediction_statistics.py`, frame statistics (averages per scenarios, platforms, etc.) are generated for every frame prediction csv-file.
 4. In `video_prediction_statistics.py`, video statistics (averages per scenarios, platforms, etc.) are generated for every frame prediction csv-file.
