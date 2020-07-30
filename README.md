@@ -39,12 +39,12 @@ DATASET
   |
    --- D01
   |     |
-  |      --- Video1
+  |      --- flat_video1
   |             |
-  |              --- Video1_frame1.jpeg
-  |              --- Video1_frame2.jpeg
-  |      --- VideoWA1
-  |      --- VideoYT1
+  |              --- flat_video1_frame1.jpeg
+  |              --- flat_video1_frame2.jpeg
+  |      --- flatWA_video1
+  |      --- flatYT_video1
    --- D02
 ```
 
