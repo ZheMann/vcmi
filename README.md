@@ -12,12 +12,12 @@ VISION
   |             |  
   |              --- flat  
   |                   |  
-  |                    --- flat_video1  
-  |                    --- flat_video2  
+  |                    --- flat_video1.mp4  
+  |                    --- flat_video2.mp4  
   |              --- flatWA  
   |                   |  
-  |                    --- flatWA_video1  
-  |                    --- flatWA_video2  
+  |                    --- flatWA_video1.mp4  
+  |                    --- flatWA_video2.mp4  
   |              --- ...  
   |              --- outdoorYT  
    --- D02  
