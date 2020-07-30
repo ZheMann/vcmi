@@ -29,7 +29,7 @@ VISION
 ### Frame dataset
 In the following steps we refer to the VISION dataset as the VISION video dataset. 
 
-1. Execute `frame_extractor.py` and set params `--input_dir="/path/to/VISION video dataset"` and `--output_dir=/path/to/VISION frame dataset`. This script creates a new directory (i.e. `/path/to/VISION frame dataset`) with the same tree-like structure as presented in the VISION video dataset. This script iterates over each device in the `VISION video dataset`, and extracts `N` frames from each video. A separate directory is created for every video. To change the number of frames extracte from a video, change param `--frames_to_save_per_video`.
+1. Execute `frame_extractor.py` and set params `--input_dir="/path/to/VISION video dataset"` and `--output_dir=/path/to/VISION frame dataset`. This script creates a new directory (i.e. `/path/to/VISION frame dataset`) consisting of frames. This script iterates over each device in the VISION video dataset, and extracts `N` frames from each video. A separate directory is created for every video. To change the number of frames extracted from a video, change param `--frames_to_save_per_video`.
 
 2. Execute `create_main_test.py`. Set property `VISION_DATASET_DIR` (line 54) to the path to `/path/to/VISION video dataset` and set `VISION_FRAMES_DIR` (line 55) to `/path/to/VISION frame dataset`. This script creates a new dataset for 28 devices (hard-defined in script itself) with only valid videos. A video is considered to be valid when both WhatsApp and YouTube versions are available for the native/original video. 
 
@@ -48,9 +48,9 @@ DATASET
    --- D02
 ```
 
-This script is not optimised as it copies frames instead of using symlinks.
+Warning: this script is not optimised as it currently copies frames instead of using symlinks.
 
-3. Execute `create_train_test_set.py` to create the train and test based on the dataset created in step 2. This script randomly selects 7 train and 6 test videos per device, including the social versions.  
+3. Execute `create_train_test_set.py` to create the train and test based on the dataset created in step 2. This script randomly selects 7 train and 6 test videos per device, including the social versions. Currently, every frame per video is copied (in this case 200). 
 
 ### Patch dataset
 The patch train and test set are created by copying the structure of the train and test set of the frame dataset. The following scripts can be executed to create and balance the patch train and test set:
@@ -60,10 +60,10 @@ The patch train and test set are created by copying the structure of the train a
 3. `patch_balancer_train.py` to balance the train set by ensuring that each video is represented by same number of frames (number of patches may differ though).
 4. `patch_balancer_test.py` same as step 3 but for the test set.
 
-## Training
-Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. I provided bash files to train the ConstrainedNet in `constrained_net/bash/*`.
+## Experiment 1. Frames - Training 
+Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/frames/*`.
 
-## Evaluating / Predicting
+## Experiment 1. Frames - Predicting
 Script `constrained_net/predict/predict_flow.py` can be executed to automatically generate predictions on frame and video level. Param `--input_dir` should point to a directory consisting of models (.h5 file). In my case, I saved a model after every epoch. The script generates frame and video predictions for each model available in the input directory. If you only want specific models to be evaluated, use param `--models` to specifiy the filenames of the models (separated by a comma). 
 
 Script `predict_flow.py` involves many steps, which I will further explain. 
@@ -82,6 +82,14 @@ This results in 1 frame statistics csv-file and 1 video statistics csv-file. The
 
 5. `frame_prediction_visualization.py` to visualize frame prediction results.
 6. `video_prediction_visualization.py` to visualize video prediction results.
+
+Bash files to evaluate the ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/frames`. 
+
+## Experiment 2. Patches - Training 
+Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Make sure to set the params `--height` and `--width` to the patch size in order to change the input size of the network. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/patches/*`.
+
+## Experiment 2. Patches - Predicting
+To create patch and video predictions, the same steps are used as for experiment 1. Bash files to evaluate the ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/patches`.   
 
 ## ConstrainedNet vs. ConvNet
 In constrained_net.py the parameter self.constrained_net can be set to False to remove the constrained convolutional layer. 
