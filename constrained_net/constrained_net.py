@@ -76,7 +76,7 @@ class ConstrainedNet:
     GLOBAL_SAVE_MODEL_DIR = "/data/s3523799/vbdi/models/"
     GLOBAL_TENSORBOARD_DIR = "/data/s3523799/vbdi/tensorboard/"
 
-    def __init__(self, model_path=None, constrained_net=False):
+    def __init__(self, model_path=None, constrained_net=True):
         self.use_TensorBoard = True
         self.model = None
         self.model_path = None
