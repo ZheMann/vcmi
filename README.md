@@ -61,7 +61,9 @@ The patch train and test set are created by copying the structure of the train a
 4. `dataset/patches/patch_balancer_test.py` same as step 3 but for the test set.
 
 ## Experiment 1. Frames - Training 
-Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/frames/*`. To continue training from a saved model, specify the path to the particular model by using `--model_path`.
+Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/frames/*`. 
+
+Use param `--model_name` to set the name of your model. To continue training from a saved model, specify the path to the particular model by using `--model_path`.
 
 
 ## Experiment 1. Frames - Predicting
@@ -87,7 +89,9 @@ This results in 1 frame statistics csv-file and 1 video statistics csv-file. The
 Bash files to evaluate the ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/frames`. 
 
 ## Experiment 2. Patches - Training 
-Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Make sure to set the params `--height` and `--width` to the patch size in order to change the input size of the network. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/patches/*`. To continue training from a saved model, specify the path to the particular model by using `--model_path`.
+Script `constrained_net/train/train.py` can be executed to train the ConstraindNet. Make sure to set the params `--height` and `--width` to the patch size in order to change the input size of the network. Bash files to train the ConvNet and ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/patches/*`.
+
+Use param `--model_name` to set the name of your model. To continue training from a saved model, specify the path to the particular model by using `--model_path`.
 
 ## Experiment 2. Patches - Predicting
 To create patch and video predictions, the same steps are used as for experiment 1. Bash files to evaluate the ConstrainedNet on e.g. HPC Peregrine can be found in `constrained_net/bash/patches`.   
